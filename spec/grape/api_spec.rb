@@ -2240,13 +2240,8 @@ describe Grape::API do
           "example"
         end
         get '/example'
-        last_response.status.should == 500
-        last_response.body.should == <<-XML
-<?xml version="1.0" encoding="UTF-8"?>
-<error>
-  <message>cannot convert String to xml</message>
-</error>
-XML
+        last_response.status.should == 200
+        last_response.body.should == "example"
       end
       it 'hash' do
         subject.get "/example" do
